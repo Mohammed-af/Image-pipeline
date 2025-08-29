@@ -1,0 +1,144 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+time="2025-08-29T04:28:28+03:00" level=warning msg="/Users/mohammedalfaleh/image-pipeline/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+#1 [internal] load local bake definitions
+#1 reading from stdin 591B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 550B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/rust:1.75
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/debian:bookworm-slim
+#4 DONE 1.1s
+
+#3 [internal] load metadata for docker.io/library/rust:1.75
+#3 DONE 1.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [builder 1/9] FROM docker.io/library/rust:1.75@sha256:87f3b2f93b82995443a1a558c234212dafe79cfdc3af956539610560369ddcd0
+#6 resolve docker.io/library/rust:1.75@sha256:87f3b2f93b82995443a1a558c234212dafe79cfdc3af956539610560369ddcd0 0.0s done
+#6 DONE 0.0s
+
+#7 [stage-1 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f7b7406c4240f86aef
+#7 resolve docker.io/library/debian:bookworm-slim@sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f7b7406c4240f86aef 0.0s done
+#7 DONE 0.0s
+
+#8 [stage-1 2/4] RUN apt-get update && apt-get install -y ca-certificates libssl3 && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [stage-1 3/4] WORKDIR /app
+#9 CACHED
+
+#10 [internal] load build context
+#10 transferring context: 86B done
+#10 DONE 0.0s
+
+#11 [builder 4/9] COPY Cargo.toml ./
+#11 CACHED
+
+#12 [builder 2/9] WORKDIR /app
+#12 CACHED
+
+#13 [builder 3/9] RUN apt-get update && apt-get install -y pkg-config libssl-dev cmake
+#13 CACHED
+
+#14 [builder 5/9] RUN mkdir src && echo "fn main() {}" > src/main.rs
+#14 CACHED
+
+#15 [builder 6/9] RUN cargo build --release
+#15 0.372     Updating crates.io index
+#15 4.038  Downloading crates ...
+#15 4.840   Downloaded atomic-waker v1.1.2
+#15 4.924   Downloaded aws-smithy-query v0.60.7
+#15 5.004   Downloaded sync_wrapper v0.1.2
+#15 5.026   Downloaded foreign-types-shared v0.1.1
+#15 5.036   Downloaded http-body v1.0.1
+#15 5.054   Downloaded foreign-types v0.3.2
+#15 5.058   Downloaded sync_wrapper v1.0.2
+#15 5.061   Downloaded equivalent v1.0.2
+#15 5.148   Downloaded tinyvec_macros v0.1.1
+#15 5.158   Downloaded signature v1.6.4
+#15 5.166   Downloaded futures-core v0.3.31
+#15 5.172   Downloaded want v0.3.1
+#15 5.177   Downloaded futures-macro v0.3.31
+#15 5.180   Downloaded crypto-common v0.1.6
+#15 5.184   Downloaded futures-task v0.3.31
+#15 5.187   Downloaded futures-io v0.3.31
+#15 5.192   Downloaded futures-executor v0.3.31
+#15 5.197   Downloaded fnv v1.0.7
+#15 5.200   Downloaded dunce v1.0.5
+#15 5.203   Downloaded digest v0.10.7
+#15 5.210   Downloaded crc v3.3.0
+#15 5.219   Downloaded bytes-utils v0.1.4
+#15 5.226   Downloaded base64-simd v0.8.0
+#15 5.232   Downloaded axum-core v0.4.5
+#15 5.243   Downloaded deranged v0.4.0
+#15 5.248   Downloaded crc-catalog v2.4.0
+#15 5.254   Downloaded generic-array v0.14.7
+#15 5.262   Downloaded cpufeatures v0.2.17
+#15 5.268   Downloaded foldhash v0.1.5
+#15 5.272   Downloaded cfg-if v1.0.3
+#15 5.277   Downloaded byteorder v1.5.0
+#15 5.286   Downloaded tower-service v0.3.3
+#15 5.290   Downloaded tower-layer v0.3.3
+#15 5.295   Downloaded urlencoding v2.1.3
+#15 5.300   Downloaded hex v0.4.3
+#15 5.307   Downloaded aws-smithy-xml v0.60.10
+#15 5.313   Downloaded aws-smithy-checksums v0.63.8
+#15 5.321   Downloaded num-integer v0.1.46
+#15 5.328   Downloaded num-conv v0.1.0
+#15 5.332   Downloaded aws-types v1.3.8
+#15 5.339   Downloaded matchers v0.1.0
+#15 5.343   Downloaded ff v0.12.1
+#15 5.352   Downloaded group v0.12.1
+#15 5.361   Downloaded futures-channel v0.3.31
+#15 5.368   Downloaded base64ct v1.8.0
+#15 5.434 error: failed to download replaced source registry `crates-io`
+#15 5.434 
+#15 5.434 Caused by:
+#15 5.434   failed to parse manifest at `/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/base64ct-1.8.0/Cargo.toml`
+#15 5.434 
+#15 5.434 Caused by:
+#15 5.434   feature `edition2024` is required
+#15 5.434 
+#15 5.434   The package requires the Cargo feature called `edition2024`, but that feature is not stabilized in this version of Cargo (1.75.0 (1d8b05cdd 2023-11-20)).
+#15 5.434   Consider trying a newer version of Cargo (this may require the nightly release).
+#15 5.434   See https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#edition-2024 for more information about the status of this feature.
+#15 ERROR: process "/bin/sh -c cargo build --release" did not complete successfully: exit code: 101
+------
+ > [builder 6/9] RUN cargo build --release:
+5.434 
+5.434 Caused by:
+5.434   failed to parse manifest at `/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/base64ct-1.8.0/Cargo.toml`
+5.434 
+5.434 Caused by:
+5.434   feature `edition2024` is required
+5.434 
+5.434   The package requires the Cargo feature called `edition2024`, but that feature is not stabilized in this version of Cargo (1.75.0 (1d8b05cdd 2023-11-20)).
+5.434   Consider trying a newer version of Cargo (this may require the nightly release).
+5.434   See https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#edition-2024 for more information about the status of this feature.
+------
+Dockerfile:6
+
+--------------------
+
+   4 |     COPY Cargo.toml ./
+
+   5 |     RUN mkdir src && echo "fn main() {}" > src/main.rs
+
+   6 | >>> RUN cargo build --release
+
+   7 |     RUN rm -rf src
+
+   8 |     COPY src ./src
+
+--------------------
+
+failed to solve: process "/bin/sh -c cargo build --release" did not complete successfully: exit code: 101
+
