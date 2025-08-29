@@ -1,0 +1,692 @@
+--progress is a global compose flag, better use `docker compose --progress xx build ...
+time="2025-08-29T14:41:26+03:00" level=warning msg="/Users/mohammedalfaleh/image-pipeline/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+#1 [internal] load local bake definitions
+#1 reading from stdin 615B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 740B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/rust:1.80-bookworm
+#3 DONE 0.9s
+
+#4 [internal] load metadata for docker.io/library/debian:bookworm-slim
+#4 DONE 0.9s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [stage-1 1/4] FROM docker.io/library/debian:bookworm-slim@sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f7b7406c4240f86aef
+#6 resolve docker.io/library/debian:bookworm-slim@sha256:b1a741487078b369e78119849663d7f1a5341ef2768798f7b7406c4240f86aef 0.0s done
+#6 CACHED
+
+#7 [builder 1/9] FROM docker.io/library/rust:1.80-bookworm@sha256:d22d8938f0403ee31c118b5bf2162b883313dd7f387f859d9f2accd7c884c385
+#7 resolve docker.io/library/rust:1.80-bookworm@sha256:d22d8938f0403ee31c118b5bf2162b883313dd7f387f859d9f2accd7c884c385 0.0s done
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 86B done
+#8 DONE 0.0s
+
+#9 [builder 2/9] RUN apt-get update && apt-get install -y     cmake pkg-config libssl-dev libsasl2-dev     libzstd-dev libpq-dev     && rm -rf /var/lib/apt/lists/*
+#9 1.338 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#9 1.616 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#9 1.730 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#9 1.836 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8793 kB]
+#9 4.964 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#9 4.970 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [277 kB]
+#9 6.049 Fetched 9331 kB in 5s (1872 kB/s)
+#9 6.049 Reading package lists...
+#9 7.147 Reading package lists...
+#9 ...
+
+#10 [stage-1 2/4] RUN apt-get update && apt-get install -y     ca-certificates libssl3 libsasl2-2 libzstd1 libpq5     && rm -rf /var/lib/apt/lists/*
+#10 1.335 Get:1 http://deb.debian.org/debian bookworm InRelease [151 kB]
+#10 1.681 Get:2 http://deb.debian.org/debian bookworm-updates InRelease [55.4 kB]
+#10 1.790 Get:3 http://deb.debian.org/debian-security bookworm-security InRelease [48.0 kB]
+#10 1.909 Get:4 http://deb.debian.org/debian bookworm/main amd64 Packages [8793 kB]
+#10 3.775 Get:5 http://deb.debian.org/debian bookworm-updates/main amd64 Packages [6924 B]
+#10 3.775 Get:6 http://deb.debian.org/debian-security bookworm-security/main amd64 Packages [277 kB]
+#10 4.964 Fetched 9331 kB in 4s (2386 kB/s)
+#10 4.964 Reading package lists...
+#10 6.140 Reading package lists...
+#10 7.298 Building dependency tree...
+#10 7.485 Reading state information...
+#10 7.790 libzstd1 is already the newest version (1.5.4+dfsg2-5).
+#10 7.790 libzstd1 set to manually installed.
+#10 7.790 The following additional packages will be installed:
+#10 7.790   krb5-locales libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#10 7.793   libkrb5support0 libldap-2.5-0 libldap-common libsasl2-modules
+#10 7.793   libsasl2-modules-db openssl
+#10 7.796 Suggested packages:
+#10 7.796   krb5-doc krb5-user libsasl2-modules-gssapi-mit
+#10 7.796   | libsasl2-modules-gssapi-heimdal libsasl2-modules-ldap libsasl2-modules-otp
+#10 7.796   libsasl2-modules-sql
+#10 7.984 The following NEW packages will be installed:
+#10 7.986   ca-certificates krb5-locales libgssapi-krb5-2 libk5crypto3 libkeyutils1
+#10 7.987   libkrb5-3 libkrb5support0 libldap-2.5-0 libldap-common libpq5 libsasl2-2
+#10 7.989   libsasl2-modules libsasl2-modules-db libssl3 openssl
+#10 8.334 0 upgraded, 15 newly installed, 0 to remove and 0 not upgraded.
+#10 8.334 Need to get 4815 kB of archives.
+#10 8.334 After this operation, 13.3 MB of additional disk space will be used.
+#10 8.334 Get:1 http://deb.debian.org/debian bookworm-updates/main amd64 libssl3 amd64 3.0.17-1~deb12u2 [2027 kB]
+#10 ...
+
+#9 [builder 2/9] RUN apt-get update && apt-get install -y     cmake pkg-config libssl-dev libsasl2-dev     libzstd-dev libpq-dev     && rm -rf /var/lib/apt/lists/*
+#9 7.147 Reading package lists...
+#9 8.549 Building dependency tree...
+#9 8.750 Reading state information...
+#9 8.967 pkg-config is already the newest version (1.8.1-1).
+#9 8.967 pkg-config set to manually installed.
+#9 8.967 libzstd-dev is already the newest version (1.5.4+dfsg2-5).
+#9 8.967 libzstd-dev set to manually installed.
+#9 8.967 The following additional packages will be installed:
+#9 8.969   cmake-data libarchive13 libjsoncpp25 libpq5 librhash0 libssl3 libuv1 openssl
+#9 8.972 Suggested packages:
+#9 8.972   cmake-doc cmake-format elpa-cmake-mode ninja-build lrzip postgresql-doc-15
+#9 8.972   libssl-doc
+#9 9.067 The following NEW packages will be installed:
+#9 9.069   cmake cmake-data libarchive13 libjsoncpp25 librhash0 libsasl2-dev libuv1
+#9 9.071 The following packages will be upgraded:
+#9 9.072   libpq-dev libpq5 libssl-dev libssl3 openssl
+#9 9.355 5 upgraded, 7 newly installed, 0 to remove and 131 not upgraded.
+#9 9.355 Need to get 17.9 MB of archives.
+#9 9.355 After this operation, 42.9 MB of additional disk space will be used.
+#9 9.355 Get:1 http://deb.debian.org/debian bookworm/main amd64 libarchive13 amd64 3.6.2-1+deb12u2 [343 kB]
+#9 9.859 Get:2 http://deb.debian.org/debian bookworm/main amd64 libjsoncpp25 amd64 1.9.5-4 [78.6 kB]
+#9 9.871 Get:3 http://deb.debian.org/debian bookworm/main amd64 librhash0 amd64 1.4.3-3 [134 kB]
+#9 9.893 Get:4 http://deb.debian.org/debian bookworm/main amd64 libuv1 amd64 1.44.2-1+deb12u1 [136 kB]
+#9 9.911 Get:5 http://deb.debian.org/debian bookworm/main amd64 cmake-data all 3.25.1-1 [2026 kB]
+#9 10.93 Get:6 http://deb.debian.org/debian bookworm/main amd64 cmake amd64 3.25.1-1 [8692 kB]
+#9 13.24 Get:7 http://deb.debian.org/debian bookworm-updates/main amd64 libssl-dev amd64 3.0.17-1~deb12u2 [2441 kB]
+#9 13.69 Get:8 http://deb.debian.org/debian bookworm-updates/main amd64 libssl3 amd64 3.0.17-1~deb12u2 [2027 kB]
+#9 14.07 Get:9 http://deb.debian.org/debian bookworm/main amd64 libpq-dev amd64 15.13-0+deb12u1 [147 kB]
+#9 14.08 Get:10 http://deb.debian.org/debian bookworm/main amd64 libpq5 amd64 15.13-0+deb12u1 [192 kB]
+#9 14.10 Get:11 http://deb.debian.org/debian bookworm/main amd64 libsasl2-dev amd64 2.1.28+dfsg-10 [235 kB]
+#9 14.16 Get:12 http://deb.debian.org/debian bookworm-updates/main amd64 openssl amd64 3.0.17-1~deb12u2 [1430 kB]
+#9 ...
+
+#10 [stage-1 2/4] RUN apt-get update && apt-get install -y     ca-certificates libssl3 libsasl2-2 libzstd1 libpq5     && rm -rf /var/lib/apt/lists/*
+#10 9.681 Get:2 http://deb.debian.org/debian bookworm-updates/main amd64 openssl amd64 3.0.17-1~deb12u2 [1430 kB]
+#10 10.42 Get:3 http://deb.debian.org/debian bookworm-updates/main amd64 ca-certificates all 20230311+deb12u1 [155 kB]
+#10 10.52 Get:4 http://deb.debian.org/debian bookworm/main amd64 krb5-locales all 1.20.1-2+deb12u3 [63.1 kB]
+#10 10.55 Get:5 http://deb.debian.org/debian bookworm/main amd64 libkrb5support0 amd64 1.20.1-2+deb12u3 [32.8 kB]
+#10 10.57 Get:6 http://deb.debian.org/debian bookworm/main amd64 libk5crypto3 amd64 1.20.1-2+deb12u3 [78.9 kB]
+#10 10.64 Get:7 http://deb.debian.org/debian bookworm/main amd64 libkeyutils1 amd64 1.6.3-2 [8808 B]
+#10 10.64 Get:8 http://deb.debian.org/debian bookworm/main amd64 libkrb5-3 amd64 1.20.1-2+deb12u3 [332 kB]
+#10 10.92 Get:9 http://deb.debian.org/debian bookworm/main amd64 libgssapi-krb5-2 amd64 1.20.1-2+deb12u3 [135 kB]
+#10 10.95 Get:10 http://deb.debian.org/debian bookworm/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg-10 [20.3 kB]
+#10 10.95 Get:11 http://deb.debian.org/debian bookworm/main amd64 libsasl2-2 amd64 2.1.28+dfsg-10 [59.7 kB]
+#10 10.97 Get:12 http://deb.debian.org/debian bookworm/main amd64 libldap-2.5-0 amd64 2.5.13+dfsg-5 [183 kB]
+#10 11.14 Get:13 http://deb.debian.org/debian bookworm/main amd64 libldap-common all 2.5.13+dfsg-5 [29.3 kB]
+#10 11.15 Get:14 http://deb.debian.org/debian bookworm/main amd64 libpq5 amd64 15.13-0+deb12u1 [192 kB]
+#10 11.27 Get:15 http://deb.debian.org/debian bookworm/main amd64 libsasl2-modules amd64 2.1.28+dfsg-10 [66.6 kB]
+#10 11.50 debconf: delaying package configuration, since apt-utils is not installed
+#10 11.54 Fetched 4815 kB in 3s (1474 kB/s)
+#10 11.57 Selecting previously unselected package libssl3:amd64.
+#10 11.57 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6089 files and directories currently installed.)
+#10 11.63 Preparing to unpack .../00-libssl3_3.0.17-1~deb12u2_amd64.deb ...
+#10 11.63 Unpacking libssl3:amd64 (3.0.17-1~deb12u2) ...
+#10 11.83 Selecting previously unselected package openssl.
+#10 11.83 Preparing to unpack .../01-openssl_3.0.17-1~deb12u2_amd64.deb ...
+#10 11.83 Unpacking openssl (3.0.17-1~deb12u2) ...
+#10 11.99 Selecting previously unselected package ca-certificates.
+#10 11.99 Preparing to unpack .../02-ca-certificates_20230311+deb12u1_all.deb ...
+#10 11.99 Unpacking ca-certificates (20230311+deb12u1) ...
+#10 12.08 Selecting previously unselected package krb5-locales.
+#10 12.09 Preparing to unpack .../03-krb5-locales_1.20.1-2+deb12u3_all.deb ...
+#10 12.09 Unpacking krb5-locales (1.20.1-2+deb12u3) ...
+#10 12.12 Selecting previously unselected package libkrb5support0:amd64.
+#10 12.12 Preparing to unpack .../04-libkrb5support0_1.20.1-2+deb12u3_amd64.deb ...
+#10 12.13 Unpacking libkrb5support0:amd64 (1.20.1-2+deb12u3) ...
+#10 12.15 Selecting previously unselected package libk5crypto3:amd64.
+#10 12.15 Preparing to unpack .../05-libk5crypto3_1.20.1-2+deb12u3_amd64.deb ...
+#10 12.16 Unpacking libk5crypto3:amd64 (1.20.1-2+deb12u3) ...
+#10 12.20 Selecting previously unselected package libkeyutils1:amd64.
+#10 12.20 Preparing to unpack .../06-libkeyutils1_1.6.3-2_amd64.deb ...
+#10 12.20 Unpacking libkeyutils1:amd64 (1.6.3-2) ...
+#10 12.23 Selecting previously unselected package libkrb5-3:amd64.
+#10 12.23 Preparing to unpack .../07-libkrb5-3_1.20.1-2+deb12u3_amd64.deb ...
+#10 12.23 Unpacking libkrb5-3:amd64 (1.20.1-2+deb12u3) ...
+#10 12.29 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#10 12.29 Preparing to unpack .../08-libgssapi-krb5-2_1.20.1-2+deb12u3_amd64.deb ...
+#10 12.30 Unpacking libgssapi-krb5-2:amd64 (1.20.1-2+deb12u3) ...
+#10 12.34 Selecting previously unselected package libsasl2-modules-db:amd64.
+#10 12.35 Preparing to unpack .../09-libsasl2-modules-db_2.1.28+dfsg-10_amd64.deb ...
+#10 12.35 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#10 12.38 Selecting previously unselected package libsasl2-2:amd64.
+#10 12.38 Preparing to unpack .../10-libsasl2-2_2.1.28+dfsg-10_amd64.deb ...
+#10 12.38 Unpacking libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#10 12.42 Selecting previously unselected package libldap-2.5-0:amd64.
+#10 12.42 Preparing to unpack .../11-libldap-2.5-0_2.5.13+dfsg-5_amd64.deb ...
+#10 12.42 Unpacking libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#10 12.46 Selecting previously unselected package libldap-common.
+#10 12.46 Preparing to unpack .../12-libldap-common_2.5.13+dfsg-5_all.deb ...
+#10 12.46 Unpacking libldap-common (2.5.13+dfsg-5) ...
+#10 12.49 Selecting previously unselected package libpq5:amd64.
+#10 12.50 Preparing to unpack .../13-libpq5_15.13-0+deb12u1_amd64.deb ...
+#10 12.50 Unpacking libpq5:amd64 (15.13-0+deb12u1) ...
+#10 12.55 Selecting previously unselected package libsasl2-modules:amd64.
+#10 12.55 Preparing to unpack .../14-libsasl2-modules_2.1.28+dfsg-10_amd64.deb ...
+#10 12.56 Unpacking libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+#10 12.61 Setting up libkeyutils1:amd64 (1.6.3-2) ...
+#10 12.62 Setting up libssl3:amd64 (3.0.17-1~deb12u2) ...
+#10 12.62 Setting up krb5-locales (1.20.1-2+deb12u3) ...
+#10 12.63 Setting up libldap-common (2.5.13+dfsg-5) ...
+#10 12.64 Setting up libkrb5support0:amd64 (1.20.1-2+deb12u3) ...
+#10 12.65 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg-10) ...
+#10 12.66 Setting up libk5crypto3:amd64 (1.20.1-2+deb12u3) ...
+#10 12.66 Setting up libsasl2-2:amd64 (2.1.28+dfsg-10) ...
+#10 12.67 Setting up libkrb5-3:amd64 (1.20.1-2+deb12u3) ...
+#10 12.68 Setting up openssl (3.0.17-1~deb12u2) ...
+#10 12.69 Setting up libsasl2-modules:amd64 (2.1.28+dfsg-10) ...
+#10 12.71 Setting up libldap-2.5-0:amd64 (2.5.13+dfsg-5) ...
+#10 12.72 Setting up ca-certificates (20230311+deb12u1) ...
+#10 12.84 debconf: unable to initialize frontend: Dialog
+#10 12.84 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#10 12.84 debconf: falling back to frontend: Readline
+#10 12.84 debconf: unable to initialize frontend: Readline
+#10 12.84 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.36.0 /usr/local/share/perl/5.36.0 /usr/lib/x86_64-linux-gnu/perl5/5.36 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.36 /usr/share/perl/5.36 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+#10 12.84 debconf: falling back to frontend: Teletype
+#10 13.58 Updating certificates in /etc/ssl/certs...
+#10 14.71 142 added, 0 removed; done.
+#10 14.74 Setting up libgssapi-krb5-2:amd64 (1.20.1-2+deb12u3) ...
+#10 14.75 Setting up libpq5:amd64 (15.13-0+deb12u1) ...
+#10 14.76 Processing triggers for libc-bin (2.36-9+deb12u10) ...
+#10 14.78 Processing triggers for ca-certificates (20230311+deb12u1) ...
+#10 14.79 Updating certificates in /etc/ssl/certs...
+#10 ...
+
+#9 [builder 2/9] RUN apt-get update && apt-get install -y     cmake pkg-config libssl-dev libsasl2-dev     libzstd-dev libpq-dev     && rm -rf /var/lib/apt/lists/*
+#9 14.88 debconf: delaying package configuration, since apt-utils is not installed
+#9 14.92 Fetched 17.9 MB in 6s (3239 kB/s)
+#9 14.96 Selecting previously unselected package libarchive13:amd64.
+#9 14.96 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23242 files and directories currently installed.)
+#9 15.12 Preparing to unpack .../00-libarchive13_3.6.2-1+deb12u2_amd64.deb ...
+#9 15.13 Unpacking libarchive13:amd64 (3.6.2-1+deb12u2) ...
+#9 15.20 Selecting previously unselected package libjsoncpp25:amd64.
+#9 15.20 Preparing to unpack .../01-libjsoncpp25_1.9.5-4_amd64.deb ...
+#9 15.20 Unpacking libjsoncpp25:amd64 (1.9.5-4) ...
+#9 15.24 Selecting previously unselected package librhash0:amd64.
+#9 15.25 Preparing to unpack .../02-librhash0_1.4.3-3_amd64.deb ...
+#9 15.25 Unpacking librhash0:amd64 (1.4.3-3) ...
+#9 15.30 Selecting previously unselected package libuv1:amd64.
+#9 15.30 Preparing to unpack .../03-libuv1_1.44.2-1+deb12u1_amd64.deb ...
+#9 15.30 Unpacking libuv1:amd64 (1.44.2-1+deb12u1) ...
+#9 15.36 Selecting previously unselected package cmake-data.
+#9 15.36 Preparing to unpack .../04-cmake-data_3.25.1-1_all.deb ...
+#9 15.37 Unpacking cmake-data (3.25.1-1) ...
+#9 ...
+
+#10 [stage-1 2/4] RUN apt-get update && apt-get install -y     ca-certificates libssl3 libsasl2-2 libzstd1 libpq5     && rm -rf /var/lib/apt/lists/*
+#10 15.72 0 added, 0 removed; done.
+#10 15.72 Running hooks in /etc/ca-certificates/update.d...
+#10 15.72 done.
+#10 DONE 15.9s
+
+#11 [stage-1 3/4] WORKDIR /app
+#11 DONE 0.0s
+
+#9 [builder 2/9] RUN apt-get update && apt-get install -y     cmake pkg-config libssl-dev libsasl2-dev     libzstd-dev libpq-dev     && rm -rf /var/lib/apt/lists/*
+#9 16.48 Selecting previously unselected package cmake.
+#9 16.49 Preparing to unpack .../05-cmake_3.25.1-1_amd64.deb ...
+#9 16.49 Unpacking cmake (3.25.1-1) ...
+#9 17.21 Preparing to unpack .../06-libssl-dev_3.0.17-1~deb12u2_amd64.deb ...
+#9 17.22 Unpacking libssl-dev:amd64 (3.0.17-1~deb12u2) over (3.0.14-1~deb12u2) ...
+#9 17.76 Preparing to unpack .../07-libssl3_3.0.17-1~deb12u2_amd64.deb ...
+#9 17.77 Unpacking libssl3:amd64 (3.0.17-1~deb12u2) over (3.0.14-1~deb12u2) ...
+#9 17.97 Preparing to unpack .../08-libpq-dev_15.13-0+deb12u1_amd64.deb ...
+#9 17.98 Unpacking libpq-dev (15.13-0+deb12u1) over (15.8-0+deb12u1) ...
+#9 18.05 Preparing to unpack .../09-libpq5_15.13-0+deb12u1_amd64.deb ...
+#9 18.06 Unpacking libpq5:amd64 (15.13-0+deb12u1) over (15.8-0+deb12u1) ...
+#9 18.22 Selecting previously unselected package libsasl2-dev.
+#9 18.22 Preparing to unpack .../10-libsasl2-dev_2.1.28+dfsg-10_amd64.deb ...
+#9 18.22 Unpacking libsasl2-dev (2.1.28+dfsg-10) ...
+#9 18.30 Preparing to unpack .../11-openssl_3.0.17-1~deb12u2_amd64.deb ...
+#9 18.31 Unpacking openssl (3.0.17-1~deb12u2) over (3.0.14-1~deb12u2) ...
+#9 18.82 Setting up libarchive13:amd64 (3.6.2-1+deb12u2) ...
+#9 18.83 Setting up libssl3:amd64 (3.0.17-1~deb12u2) ...
+#9 18.84 Setting up libpq5:amd64 (15.13-0+deb12u1) ...
+#9 18.84 Setting up libsasl2-dev (2.1.28+dfsg-10) ...
+#9 18.85 Setting up libuv1:amd64 (1.44.2-1+deb12u1) ...
+#9 18.86 Setting up libssl-dev:amd64 (3.0.17-1~deb12u2) ...
+#9 18.86 Setting up libjsoncpp25:amd64 (1.9.5-4) ...
+#9 18.87 Setting up librhash0:amd64 (1.4.3-3) ...
+#9 18.88 Setting up cmake-data (3.25.1-1) ...
+#9 18.89 Setting up openssl (3.0.17-1~deb12u2) ...
+#9 18.91 Setting up libpq-dev (15.13-0+deb12u1) ...
+#9 18.91 Setting up cmake (3.25.1-1) ...
+#9 18.92 Processing triggers for libc-bin (2.36-9+deb12u8) ...
+#9 DONE 19.1s
+
+#12 [builder 3/9] WORKDIR /app
+#12 DONE 0.1s
+
+#13 [builder 4/9] COPY Cargo.toml ./
+#13 DONE 0.0s
+
+#14 [builder 5/9] RUN mkdir src && echo "fn main() {}" > src/main.rs
+#14 DONE 0.2s
+
+#15 [builder 6/9] RUN cargo build --release
+#15 0.333     Updating crates.io index
+#15 5.490      Locking 388 packages to latest compatible versions
+#15 5.491       Adding addr2line v0.24.2 (latest: v0.25.0)
+#15 5.491       Adding allocator-api2 v0.2.21 (latest: v0.3.0)
+#15 5.510       Adding axum v0.7.9 (latest: v0.8.4)
+#15 5.511       Adding axum-core v0.4.5 (latest: v0.5.2)
+#15 5.513       Adding base16ct v0.1.1 (latest: v0.3.0)
+#15 5.513       Adding base64 v0.21.7 (latest: v0.22.1)
+#15 5.515       Adding bindgen v0.69.5 (latest: v0.72.0)
+#15 5.518       Adding const-oid v0.9.6 (latest: v0.10.1)
+#15 5.518       Adding core-foundation v0.9.4 (latest: v0.10.1)
+#15 5.518       Adding crc-fast v1.3.0 (latest: v1.4.0)
+#15 5.519       Adding crypto-bigint v0.4.9 (latest: v0.6.1)
+#15 5.519       Adding crypto-bigint v0.5.5 (latest: v0.6.1)
+#15 5.521       Adding der v0.6.1 (latest: v0.7.10)
+#15 5.521       Adding deranged v0.4.0 (latest: v0.5.2)
+#15 5.523       Adding ecdsa v0.14.8 (latest: v0.16.9)
+#15 5.524       Adding elliptic-curve v0.12.3 (latest: v0.13.8)
+#15 5.526       Adding etcetera v0.8.0 (latest: v0.10.0)
+#15 5.526       Adding event-listener v2.5.3 (latest: v5.4.1)
+#15 5.527       Adding ff v0.12.1 (latest: v0.13.1)
+#15 5.528       Adding foldhash v0.1.5 (latest: v0.2.0)
+#15 5.528       Adding foreign-types v0.3.2 (latest: v0.5.0)
+#15 5.528       Adding foreign-types-shared v0.1.1 (latest: v0.3.1)
+#15 5.529       Adding generic-array v0.14.7 (latest: v1.2.0)
+#15 5.530       Adding getrandom v0.2.16 (latest: v0.3.3)
+#15 5.531       Adding gimli v0.31.1 (latest: v0.32.2)
+#15 5.532       Adding group v0.12.1 (latest: v0.13.0)
+#15 5.533       Adding h2 v0.3.27 (latest: v0.4.12)
+#15 5.534       Adding hashbrown v0.14.5 (latest: v0.15.5)
+#15 5.534       Adding hashlink v0.8.4 (latest: v0.10.0)
+#15 5.534       Adding heck v0.4.1 (latest: v0.5.0)
+#15 5.535       Adding http v0.2.12 (latest: v1.3.1)
+#15 5.535       Adding http-body v0.4.6 (latest: v1.0.1)
+#15 5.539       Adding hyper v0.14.32 (latest: v1.7.0)
+#15 5.546       Adding hyper-rustls v0.24.2 (latest: v0.27.7)
+#15 5.550       Adding itertools v0.12.1 (latest: v0.14.0)
+#15 5.553       Adding libsqlite3-sys v0.27.0 (latest: v0.35.0)
+#15 5.554       Adding linux-raw-sys v0.4.15 (latest: v0.10.0)
+#15 5.554       Adding linux-raw-sys v0.9.4 (latest: v0.10.0)
+#15 5.556       Adding lru v0.12.5 (latest: v0.16.0)
+#15 5.556       Adding matchit v0.7.3 (latest: v0.8.6)
+#15 5.561       Adding nom v7.1.3 (latest: v8.0.0)
+#15 5.561       Adding num-conv v0.1.0 (latest: v0.2.0)
+#15 5.563       Adding object v0.36.7 (latest: v0.37.3)
+#15 5.567       Adding p256 v0.11.1 (latest: v0.13.2)
+#15 5.568       Adding pkcs8 v0.9.0 (latest: v0.10.2)
+#15 5.571       Adding rand v0.8.5 (latest: v0.9.2)
+#15 5.571       Adding rand_chacha v0.3.1 (latest: v0.9.0)
+#15 5.572       Adding rand_core v0.6.4 (latest: v0.9.3)
+#15 5.572       Adding rdkafka v0.36.2 (latest: v0.38.0)
+#15 5.578       Adding rfc6979 v0.3.1 (latest: v0.4.0)
+#15 5.582       Adding rustc-hash v1.1.0 (latest: v2.1.1)
+#15 5.587       Adding rustix v0.38.44 (latest: v1.0.8)
+#15 5.593       Adding rustls v0.21.12 (latest: v0.23.31)
+#15 5.593       Adding rustls-native-certs v0.6.3 (latest: v0.8.1)
+#15 5.593       Adding rustls-pemfile v1.0.4 (latest: v2.2.0)
+#15 5.593       Adding rustls-webpki v0.101.7 (latest: v0.103.4)
+#15 5.594       Adding sec1 v0.3.0 (latest: v0.7.3)
+#15 5.595       Adding security-framework v2.11.1 (latest: v3.3.0)
+#15 5.599       Adding signature v1.6.4 (latest: v2.2.0)
+#15 5.599       Adding socket2 v0.5.10 (latest: v0.6.0)
+#15 5.599       Adding spin v0.9.8 (latest: v0.10.0)
+#15 5.599       Adding spki v0.6.0 (latest: v0.7.3)
+#15 5.599       Adding sqlformat v0.2.6 (latest: v0.3.5)
+#15 5.600       Adding sqlx v0.7.4 (latest: v0.8.6)
+#15 5.602       Adding sqlx-core v0.7.4 (latest: v0.8.6)
+#15 5.603       Adding sqlx-macros v0.7.4 (latest: v0.8.6)
+#15 5.604       Adding sqlx-macros-core v0.7.4 (latest: v0.8.6)
+#15 5.604       Adding sqlx-mysql v0.7.4 (latest: v0.8.6)
+#15 5.605       Adding sqlx-postgres v0.7.4 (latest: v0.8.6)
+#15 5.606       Adding sqlx-sqlite v0.7.4 (latest: v0.8.6)
+#15 5.608       Adding syn v1.0.109 (latest: v2.0.106)
+#15 5.611       Adding thiserror v1.0.69 (latest: v2.0.16)
+#15 5.611       Adding thiserror-impl v1.0.69 (latest: v2.0.16)
+#15 5.617       Adding tokio-rustls v0.24.1 (latest: v0.26.2)
+#15 5.617       Adding toml_datetime v0.6.11 (latest: v0.7.0)
+#15 5.618       Adding toml_edit v0.22.27 (latest: v0.23.4)
+#15 5.622       Adding wasi v0.11.1+wasi-snapshot-preview1 (latest: v0.14.3+wasi-0.2.4)
+#15 5.625       Adding which v4.4.2 (latest: v8.0.0)
+#15 5.626       Adding windows-sys v0.48.0 (latest: v0.60.2)
+#15 5.626       Adding windows-sys v0.52.0 (latest: v0.60.2)
+#15 5.626       Adding windows-sys v0.59.0 (latest: v0.60.2)
+#15 5.626       Adding windows-targets v0.48.5 (latest: v0.53.3)
+#15 5.626       Adding windows-targets v0.52.6 (latest: v0.53.3)
+#15 5.626       Adding windows_aarch64_gnullvm v0.48.5 (latest: v0.53.0)
+#15 5.626       Adding windows_aarch64_gnullvm v0.52.6 (latest: v0.53.0)
+#15 5.626       Adding windows_aarch64_msvc v0.48.5 (latest: v0.53.0)
+#15 5.626       Adding windows_aarch64_msvc v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_i686_gnu v0.48.5 (latest: v0.53.0)
+#15 5.627       Adding windows_i686_gnu v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_i686_gnullvm v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_i686_msvc v0.48.5 (latest: v0.53.0)
+#15 5.627       Adding windows_i686_msvc v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_gnu v0.48.5 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_gnu v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_gnullvm v0.48.5 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_gnullvm v0.52.6 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_msvc v0.48.5 (latest: v0.53.0)
+#15 5.627       Adding windows_x86_64_msvc v0.52.6 (latest: v0.53.0)
+#15 5.667  Downloading crates ...
+#15 6.303   Downloaded aws-smithy-async v1.2.5
+#15 6.442   Downloaded base16ct v0.1.1
+#15 6.495   Downloaded aws-smithy-query v0.60.7
+#15 6.635   Downloaded foreign-types-shared v0.1.1
+#15 6.645   Downloaded equivalent v1.0.2
+#15 6.730   Downloaded sqlx-macros v0.7.4
+#15 6.736   Downloaded foreign-types v0.3.2
+#15 6.759   Downloaded autocfg v1.5.0
+#15 6.771   Downloaded atomic-waker v1.1.2
+#15 6.787   Downloaded atoi v2.0.0
+#15 6.797   Downloaded aws-smithy-observability v0.1.3
+#15 6.808   Downloaded cfg-if v1.0.3
+#15 6.816   Downloaded crc v3.3.0
+#15 6.826   Downloaded futures-task v0.3.31
+#15 6.835   Downloaded generic-array v0.14.7
+#15 6.846   Downloaded sync_wrapper v1.0.2
+#15 6.851   Downloaded futures-executor v0.3.31
+#15 6.859   Downloaded futures-core v0.3.31
+#15 6.867   Downloaded fastrand v2.3.0
+#15 6.877   Downloaded futures-io v0.3.31
+#15 6.881   Downloaded either v1.15.0
+#15 6.896   Downloaded digest v0.10.7
+#15 6.913   Downloaded hex v0.4.3
+#15 6.923   Downloaded foldhash v0.1.5
+#15 6.931   Downloaded aws-smithy-http v0.62.3
+#15 6.943   Downloaded form_urlencoded v1.2.2
+#15 6.956   Downloaded hashlink v0.8.4
+#15 6.967   Downloaded group v0.12.1
+#15 6.986   Downloaded tower-layer v0.3.3
+#15 6.995   Downloaded try-lock v0.2.5
+#15 6.999   Downloaded tower-service v0.3.3
+#15 7.009   Downloaded anyhow v1.0.99
+#15 7.030   Downloaded getrandom v0.2.16
+#15 7.048   Downloaded dotenvy v0.15.7
+#15 7.063   Downloaded getrandom v0.3.3
+#15 7.081   Downloaded httparse v1.10.1
+#15 7.095   Downloaded http-body v1.0.1
+#15 7.104   Downloaded bitflags v2.9.3
+#15 7.138   Downloaded hyper-rustls v0.27.7
+#15 7.158   Downloaded zerofrom v0.1.6
+#15 7.166   Downloaded sec1 v0.3.0
+#15 7.177   Downloaded scopeguard v1.2.0
+#15 7.188   Downloaded slab v0.4.11
+#15 7.197   Downloaded spki v0.6.0
+#15 7.212   Downloaded spki v0.7.3
+#15 7.221   Downloaded powerfmt v0.2.0
+#15 7.238   Downloaded aws-sdk-sso v1.82.0
+#15 7.307   Downloaded stringprep v0.1.5
+#15 7.316   Downloaded quote v1.0.40
+#15 7.323   Downloaded proc-macro-crate v3.3.0
+#15 7.330   Downloaded pkg-config v0.3.32
+#15 7.336   Downloaded litemap v0.8.0
+#15 7.351   Downloaded once_cell v1.21.3
+#15 7.367   Downloaded aws-smithy-runtime v1.9.1
+#15 7.429   Downloaded openssl-macros v0.1.1
+#15 7.434   Downloaded hyper-tls v0.6.0
+#15 7.443   Downloaded untrusted v0.9.0
+#15 7.451   Downloaded native-tls v0.2.14
+#15 7.466   Downloaded hashbrown v0.14.5
+#15 7.504   Downloaded md-5 v0.10.6
+#15 7.510   Downloaded outref v0.5.2
+#15 7.516   Downloaded http-body v0.4.6
+#15 7.524   Downloaded zerofrom-derive v0.1.6
+#15 7.527   Downloaded rustls-webpki v0.103.4
+#15 7.540   Downloaded axum v0.7.9
+#15 7.569   Downloaded pkcs8 v0.9.0
+#15 7.578   Downloaded ryu v1.0.20
+#15 7.590   Downloaded matchit v0.7.3
+#15 7.599   Downloaded pkcs8 v0.10.2
+#15 7.615   Downloaded parking_lot v0.12.4
+#15 7.631   Downloaded indexmap v2.11.0
+#15 7.652   Downloaded aws-sdk-sts v1.84.0
+#15 7.721   Downloaded idna_adapter v1.2.1
+#15 7.726   Downloaded pin-utils v0.1.0
+#15 7.732   Downloaded time-macros v0.2.22
+#15 7.743   Downloaded pin-project-lite v0.2.16
+#15 7.769   Downloaded tokio-stream v0.1.17
+#15 7.796   Downloaded rand_core v0.9.3
+#15 7.808   Downloaded openssl-sys v0.9.109
+#15 7.847   Downloaded tokio-rustls v0.26.2
+#15 7.860   Downloaded icu_collections v2.0.0
+#15 7.910   Downloaded itoa v1.0.15
+#15 7.918   Downloaded hyper-util v0.1.16
+#15 7.956   Downloaded rand_core v0.6.4
+#15 7.970   Downloaded idna v1.1.0
+#15 8.011   Downloaded lru v0.12.5
+#15 8.023   Downloaded icu_properties_data v2.0.1
+#15 8.127   Downloaded openssl v0.10.73
+#15 8.169   Downloaded rustls v0.21.12
+#15 8.418   Downloaded rustix v1.0.8
+#15 8.656   Downloaded log v0.4.27
+#15 8.749   Downloaded libz-sys v1.1.22
+#15 8.941   Downloaded nom v7.1.3
+#15 9.009   Downloaded iri-string v0.7.8
+#15 9.113   Downloaded tower-http v0.6.6
+#15 9.202   Downloaded ring v0.17.14
+#15 9.645   Downloaded rustls v0.23.31
+#15 9.807   Downloaded syn v2.0.106
+#15 9.911   Downloaded zerocopy v0.8.26
+#15 9.983   Downloaded tokio v1.47.1
+#15 10.21   Downloaded linux-raw-sys v0.9.4
+#15 10.49   Downloaded winnow v0.7.13
+#15 10.53   Downloaded vcpkg v0.2.15
+#15 10.71   Downloaded syn v1.0.109
+#15 10.74   Downloaded aws-sdk-s3 v1.103.0
+#15 11.11   Downloaded sqlx v0.7.4
+#15 11.24   Downloaded serde_json v1.0.143
+#15 11.30   Downloaded hkdf v0.12.4
+#15 11.31   Downloaded http v1.3.1
+#15 11.38   Downloaded zerovec v0.11.4
+#15 11.43   Downloaded url v2.5.7
+#15 11.44   Downloaded unicode-segmentation v1.12.0
+#15 11.45   Downloaded unicode-normalization v0.1.24
+#15 11.46   Downloaded tower v0.5.2
+#15 11.48   Downloaded libsqlite3-sys v0.27.0
+#15 12.12   Downloaded tokio-util v0.7.16
+#15 12.15   Downloaded time v0.3.41
+#15 12.20   Downloaded sqlx-postgres v0.7.4
+#15 12.25   Downloaded sqlx-core v0.7.4
+#15 12.32   Downloaded encoding_rs v0.8.35
+#15 12.49   Downloaded http v0.2.12
+#15 12.53   Downloaded unicode_categories v0.1.1
+#15 12.55   Downloaded rdkafka-sys v4.9.0+2.10.0
+#15 13.36   Downloaded libc v0.2.175
+#15 13.50   Downloaded zerotrie v0.2.2
+#15 13.51   Downloaded uuid v1.18.0
+#15 13.52   Downloaded unicode-properties v0.1.3
+#15 13.52   Downloaded unicode-bidi v0.3.18
+#15 13.53   Downloaded typenum v1.18.0
+#15 13.54   Downloaded tracing-core v0.1.34
+#15 13.55   Downloaded tracing v0.1.41
+#15 13.57   Downloaded toml_edit v0.22.27
+#15 13.60   Downloaded serde v1.0.219
+#15 13.62   Downloaded rustversion v1.0.22
+#15 13.64   Downloaded icu_properties v2.0.1
+#15 13.65   Downloaded icu_normalizer v2.0.0
+#15 13.67   Downloaded regex-automata v0.4.10
+#15 13.77   Downloaded ipnet v2.11.0
+#15 13.78   Downloaded aws-lc-sys v0.30.0
+#15 15.49   Downloaded tinyvec v1.10.0
+#15 15.51   Downloaded tempfile v3.21.0
+#15 15.52   Downloaded sqlx-sqlite v0.7.4
+#15 15.54   Downloaded sqlx-mysql v0.7.4
+#15 15.57   Downloaded socket2 v0.6.0
+#15 15.58   Downloaded socket2 v0.5.10
+#15 15.59   Downloaded serde_derive v1.0.219
+#15 15.61   Downloaded parking_lot_core v0.9.11
+#15 15.61   Downloaded regex-syntax v0.8.6
+#15 15.65   Downloaded hmac v0.12.1
+#15 15.66   Downloaded unicode-ident v1.0.18
+#15 15.68   Downloaded rdkafka v0.36.2
+#15 15.71   Downloaded hyper v0.14.32
+#15 15.74   Downloaded xmlparser v0.13.6
+#15 15.75   Downloaded rand_chacha v0.9.0
+#15 15.75   Downloaded rustc_version v0.4.1
+#15 15.76   Downloaded openssl-probe v0.1.6
+#15 15.77   Downloaded hyper v1.7.0
+#15 15.82   Downloaded regex v1.11.2
+#15 15.89   Downloaded num-bigint-dig v0.8.4
+#15 15.96   Downloaded reqwest v0.12.23
+#15 16.07   Downloaded rustls-webpki v0.101.7
+#15 16.16   Downloaded home v0.5.11
+#15 16.16   Downloaded zeroize v1.8.1
+#15 16.17   Downloaded yoke v0.8.0
+#15 16.18   Downloaded writeable v0.6.1
+#15 16.19   Downloaded whoami v1.6.1
+#15 16.20   Downloaded tracing-attributes v0.1.30
+#15 16.21   Downloaded rand v0.9.2
+#15 16.23   Downloaded libm v0.2.15
+#15 16.29   Downloaded regex-lite v0.1.7
+#15 16.32   Downloaded tokio-rustls v0.24.1
+#15 16.33   Downloaded chrono v0.4.41
+#15 16.38   Downloaded aws-lc-rs v1.13.3
+#15 16.47   Downloaded percent-encoding v2.3.2
+#15 16.48   Downloaded jobserver v0.1.34
+#15 16.51   Downloaded iana-time-zone v0.1.63
+#15 16.53   Downloaded rand v0.8.5
+#15 16.55   Downloaded minimal-lexical v0.2.1
+#15 16.57   Downloaded mio v1.0.4
+#15 16.61   Downloaded sqlx-macros-core v0.7.4
+#15 16.63   Downloaded sqlformat v0.2.6
+#15 16.69   Downloaded spin v0.9.8
+#15 16.73   Downloaded smallvec v1.15.1
+#15 16.74   Downloaded signature v2.2.0
+#15 16.75   Downloaded sha2 v0.10.9
+#15 16.76   Downloaded h2 v0.4.12
+#15 16.80   Downloaded pkcs1 v0.7.5
+#15 16.82   Downloaded icu_normalizer_data v2.0.0
+#15 16.83   Downloaded memchr v2.7.5
+#15 16.89   Downloaded signature v1.6.4
+#15 16.90   Downloaded semver v1.0.26
+#15 16.90   Downloaded sct v0.7.1
+#15 16.92   Downloaded h2 v0.3.27
+#15 16.99   Downloaded aho-corasick v1.1.3
+#15 17.02   Downloaded http-body-util v0.1.3
+#15 17.02   Downloaded p256 v0.11.1
+#15 17.05   Downloaded rsa v0.9.8
+#15 17.07   Downloaded zerovec-derive v0.11.1
+#15 17.07   Downloaded yoke-derive v0.8.0
+#15 17.09   Downloaded futures-util v0.3.31
+#15 17.16   Downloaded hyper-rustls v0.24.2
+#15 17.18   Downloaded vsimd v0.8.0
+#15 17.19   Downloaded version_check v0.9.5
+#15 17.20   Downloaded utf8_iter v1.0.4
+#15 17.21   Downloaded time-core v0.1.4
+#15 17.22   Downloaded synstructure v0.13.2
+#15 17.23   Downloaded httpdate v1.0.3
+#15 17.24   Downloaded rand_chacha v0.3.1
+#15 17.24   Downloaded lazy_static v1.5.0
+#15 17.25   Downloaded rfc6979 v0.3.1
+#15 17.26   Downloaded proc-macro2 v1.0.101
+#15 17.28   Downloaded num-traits v0.2.19
+#15 17.30   Downloaded toml_datetime v0.6.11
+#15 17.31   Downloaded tokio-native-tls v0.3.1
+#15 17.33   Downloaded hashbrown v0.15.5
+#15 17.38   Downloaded cc v1.2.34
+#15 17.40   Downloaded aws-config v1.8.5
+#15 17.45   Downloaded num-conv v0.1.0
+#15 17.46   Downloaded icu_locale_core v2.0.0
+#15 17.49   Downloaded aws-sdk-ssooidc v1.83.0
+#15 17.53   Downloaded tokio-macros v2.5.0
+#15 17.53   Downloaded thiserror v1.0.69
+#15 17.55   Downloaded rustls-native-certs v0.6.3
+#15 17.57   Downloaded tinystr v0.8.1
+#15 17.58   Downloaded pem-rfc7468 v0.7.0
+#15 17.59   Downloaded num_enum_derive v0.7.4
+#15 17.59   Downloaded num-integer v0.1.46
+#15 17.60   Downloaded rustls-pemfile v1.0.4
+#15 17.61   Downloaded rustls-native-certs v0.8.1
+#15 17.62   Downloaded ppv-lite86 v0.2.21
+#15 17.63   Downloaded paste v1.0.15
+#15 17.64   Downloaded num_enum v0.7.4
+#15 17.66   Downloaded num-iter v0.1.45
+#15 17.66   Downloaded lock_api v0.4.13
+#15 17.67   Downloaded icu_provider v2.0.0
+#15 17.69   Downloaded thiserror-impl v1.0.69
+#15 17.70   Downloaded subtle v2.6.1
+#15 17.70   Downloaded stable_deref_trait v1.2.0
+#15 17.71   Downloaded shlex v1.3.0
+#15 17.72   Downloaded sha1 v0.10.6
+#15 17.73   Downloaded serde_path_to_error v0.1.17
+#15 17.74   Downloaded crc-fast v1.3.0
+#15 17.76   Downloaded base64 v0.21.7
+#15 17.78   Downloaded signal-hook-registry v1.4.6
+#15 17.79   Downloaded futures-intrusive v0.5.0
+#15 17.83   Downloaded aws-smithy-types v1.3.2
+#15 17.89   Downloaded aws-smithy-http-client v1.1.1
+#15 18.16   Downloaded aws-sigv4 v1.3.4
+#15 18.54   Downloaded potential_utf v0.1.3
+#15 18.54   Downloaded mime v0.3.17
+#15 18.55   Downloaded serde_urlencoded v0.7.1
+#15 18.55   Downloaded der v0.7.10
+#15 18.59   Downloaded allocator-api2 v0.2.21
+#15 18.61   Downloaded der v0.6.1
+#15 18.64   Downloaded crypto-bigint v0.5.5
+#15 18.69   Downloaded aws-smithy-runtime-api v1.9.0
+#15 18.71   Downloaded bytes v1.10.1
+#15 18.73   Downloaded base64 v0.22.1
+#15 18.75   Downloaded aws-runtime v1.5.10
+#15 18.76   Downloaded tinyvec_macros v0.1.1
+#15 18.77   Downloaded flume v0.11.1
+#15 18.78   Downloaded elliptic-curve v0.12.3
+#15 18.79   Downloaded want v0.3.1
+#15 18.79   Downloaded rustls-pki-types v1.12.0
+#15 18.82   Downloaded urlencoding v2.1.3
+#15 18.83   Downloaded crypto-bigint v0.4.9
+#15 18.85   Downloaded crossbeam-utils v0.8.21
+#15 18.86   Downloaded ahash v0.8.12
+#15 18.87   Downloaded const-oid v0.9.6
+#15 18.88   Downloaded displaydoc v0.2.5
+#15 18.89   Downloaded fs_extra v1.3.0
+#15 18.90   Downloaded ecdsa v0.14.8
+#15 18.91   Downloaded crypto-common v0.1.6
+#15 18.91   Downloaded crc32fast v1.5.0
+#15 18.92   Downloaded aws-types v1.3.8
+#15 18.92   Downloaded futures-channel v0.3.31
+#15 18.93   Downloaded aws-smithy-xml v0.60.10
+#15 18.94   Downloaded base64ct v1.8.0
+#15 19.16 error: failed to parse manifest at `/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/base64ct-1.8.0/Cargo.toml`
+#15 19.16 
+#15 19.16 Caused by:
+#15 19.16   feature `edition2024` is required
+#15 19.16 
+#15 19.16   The package requires the Cargo feature called `edition2024`, but that feature is not stabilized in this version of Cargo (1.80.1 (376290515 2024-07-16)).
+#15 19.16   Consider trying a newer version of Cargo (this may require the nightly release).
+#15 19.16   See https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#edition-2024 for more information about the status of this feature.
+#15 ERROR: process "/bin/sh -c cargo build --release" did not complete successfully: exit code: 101
+------
+ > [builder 6/9] RUN cargo build --release:
+18.93   Downloaded aws-smithy-xml v0.60.10
+18.94   Downloaded base64ct v1.8.0
+19.16 error: failed to parse manifest at `/usr/local/cargo/registry/src/index.crates.io-6f17d22bba15001f/base64ct-1.8.0/Cargo.toml`
+19.16 
+19.16 Caused by:
+19.16   feature `edition2024` is required
+19.16 
+19.16   The package requires the Cargo feature called `edition2024`, but that feature is not stabilized in this version of Cargo (1.80.1 (376290515 2024-07-16)).
+19.16   Consider trying a newer version of Cargo (this may require the nightly release).
+19.16   See https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#edition-2024 for more information about the status of this feature.
+------
+Dockerfile:11
+
+--------------------
+
+   9 |     COPY Cargo.toml ./
+
+  10 |     RUN mkdir src && echo "fn main() {}" > src/main.rs
+
+  11 | >>> RUN cargo build --release
+
+  12 |     RUN rm -rf src
+
+  13 |     COPY src ./src
+
+--------------------
+
+failed to solve: process "/bin/sh -c cargo build --release" did not complete successfully: exit code: 101
+
