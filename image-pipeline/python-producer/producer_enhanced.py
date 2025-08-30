@@ -27,7 +27,7 @@ except ImportError as e:
 class EnhancedImageProducer:
     def __init__(self):
         self.kafka_broker = os.getenv("KAFKA_BROKER", "kafka:29092")
-        self.fastapi_url = os.getenv("FASTAPI_URL", "http://host.docker.internal:8003")
+        self.fastapi_url = os.getenv("FASTAPI_URL", "http://model-serving-app:8003")
         self.source_dir = os.getenv("SOURCE_DIR", "/app/images")
         
         print("\n=== ENHANCED PRODUCER WITH DUAL EMBEDDINGS ===")
@@ -65,15 +65,15 @@ class EnhancedImageProducer:
         
         try:
             # Check base URL
-            response = requests.get(self.fastapi_url, timeout=3)
+            response = requests.get(self.fastapi_url + "/health", timeout=3)
             print(f"✓ FastAPI service is running at {self.fastapi_url}")
             
-            # Test image embedding endpoint
+            # Test image embedding endpoint with correct format
             test_image = self.create_test_image()
             img_response = requests.post(
                 f"{self.fastapi_url}/retrieval/SigLIP/embed-image",
-                json={"image": test_image},
-                timeout=5
+                json={"data": [test_image]},  # data as list
+                timeout=10
             )
             if img_response.status_code == 200:
                 print(f"✓ Image embedding endpoint is working")
@@ -81,11 +81,11 @@ class EnhancedImageProducer:
                 print(f"✗ Image endpoint returned status {img_response.status_code}")
                 return False
             
-            # Test text embedding endpoint
+            # Test text embedding endpoint with correct format
             text_response = requests.post(
                 f"{self.fastapi_url}/retrieval/SigLIP/embed-text",
-                json={"text": "test"},
-                timeout=5
+                json={"data": ["test"]},  # data as list
+                timeout=10
             )
             if text_response.status_code == 200:
                 print(f"✓ Text embedding endpoint is working")
@@ -102,7 +102,7 @@ class EnhancedImageProducer:
     
     def create_test_image(self) -> str:
         """Create a small test image"""
-        img = Image.new('RGB', (1, 1), color='white')
+        img = Image.new('RGB', (384, 384), color='white')
         import io
         buffered = io.BytesIO()
         img.save(buffered, format="JPEG")
@@ -111,25 +111,26 @@ class EnhancedImageProducer:
     def detect_embedding_dimension(self) -> int:
         """Detect embedding dimension from FastAPI"""
         if not self.fastapi_available:
-            return 512  # Default
+            return 1152  # Default SigLIP dimension
         
         try:
             test_image = self.create_test_image()
             response = requests.post(
                 f"{self.fastapi_url}/retrieval/SigLIP/embed-image",
-                json={"image": test_image},
-                timeout=5
+                json={"data": [test_image]},  # data as list
+                timeout=10
             )
             if response.status_code == 200:
-                embedding = response.json().get("embedding", [])
-                dim = len(embedding)
-                print(f"✓ Detected embedding dimension: {dim}")
-                return dim
+                result = response.json()
+                if 'embeddings' in result and result['embeddings']:
+                    dim = len(result['embeddings'][0])
+                    print(f"✓ Detected embedding dimension: {dim}")
+                    return dim
         except:
             pass
         
-        print("Using default dimension: 512")
-        return 512
+        print("Using default dimension: 1152")
+        return 1152
     
     def get_image_embedding(self, image_base64: str) -> List[float]:
         """Get image embedding from FastAPI"""
@@ -137,11 +138,14 @@ class EnhancedImageProducer:
             try:
                 response = requests.post(
                     f"{self.fastapi_url}/retrieval/SigLIP/embed-image",
-                    json={"image": image_base64},
-                    timeout=10
+                    json={"data": [image_base64]},  # data as list
+                    timeout=30
                 )
                 if response.status_code == 200:
-                    return response.json().get("embedding", [])
+                    result = response.json()
+                    if 'embeddings' in result and result['embeddings']:
+                        return result['embeddings'][0]  # Get first embedding from batch
+                    return []
             except Exception as e:
                 print(f"  Image embedding error: {e}")
         
@@ -155,11 +159,14 @@ class EnhancedImageProducer:
             try:
                 response = requests.post(
                     f"{self.fastapi_url}/retrieval/SigLIP/embed-text",
-                    json={"text": text},
-                    timeout=10
+                    json={"data": [text]},  # data as list
+                    timeout=30
                 )
                 if response.status_code == 200:
-                    return response.json().get("embedding", [])
+                    result = response.json()
+                    if 'embeddings' in result and result['embeddings']:
+                        return result['embeddings'][0]  # Get first embedding from batch
+                    return []
             except Exception as e:
                 print(f"  Text embedding error: {e}")
         
@@ -258,7 +265,14 @@ class EnhancedImageProducer:
         
         if not os.path.exists(self.source_dir):
             print(f"ERROR: Directory {self.source_dir} does not exist!")
-            return
+            # Create some test images
+            print("Creating test images...")
+            os.makedirs(self.source_dir, exist_ok=True)
+            colors = ['red', 'green', 'blue', 'yellow', 'purple']
+            for color in colors:
+                img = Image.new('RGB', (256, 256), color=color)
+                img.save(f"{self.source_dir}/test_{color}.jpg")
+            print(f"Created {len(colors)} test images")
         
         # Find all images
         image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp')

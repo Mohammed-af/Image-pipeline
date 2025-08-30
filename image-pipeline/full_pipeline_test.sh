@@ -1,3 +1,71 @@
+#!/bin/bash
+
+# Complete Pipeline Test Script (CPU Mode)
+echo "=================================================="
+echo "   FULL PIPELINE TEST - ALL COMPONENTS (CPU)"
+echo "=================================================="
+echo ""
+
+# Step 1: Clean up any existing containers
+echo "[1/10] Cleaning up existing containers..."
+cd image-pipeline
+docker compose down -v
+docker stop triton-server model-serving-app 2>/dev/null
+docker rm triton-server model-serving-app 2>/dev/null
+echo ""
+
+# Step 2: Start Triton (CPU mode)
+echo "[2/10] Starting Triton Server (CPU mode)..."
+docker run --name triton-server \
+    --rm -d \
+    --network ml-network \
+    -p 8000:8000 -p 8001:8001 -p 8002:8002 \
+    -v $(pwd)/../tritonserver/model_repository:/models \
+    nvcr.io/nvidia/tritonserver:25.07-py3 \
+    tritonserver \
+    --model-repository=/models \
+    --model-control-mode=poll \
+    --repository-poll-secs=5
+
+sleep 10
+
+echo "[3/10] Starting FastAPI Model Serving..."
+docker run --name model-serving-app \
+    --rm -d \
+    -p 8003:8003 \
+    --network ml-network \
+    -e TRITON_SERVER_URL="triton-server:8001" \
+    crossmodal-model-serving
+
+docker network connect image-pipeline_pipeline-net model-serving-app
+sleep 5
+echo ""
+
+# Step 4: Start Infrastructure Services
+echo "[4/10] Starting Infrastructure (Kafka, PostgreSQL, MinIO, etcd)..."
+docker compose up -d zookeeper kafka postgres minio minio-init etcd
+sleep 30
+echo ""
+
+# Step 5: Start Milvus
+echo "[5/10] Starting Milvus Vector Database..."
+docker compose up -d milvus
+sleep 60
+echo ""
+
+# Step 6: Initialize Milvus Collections
+echo "[6/10] Initializing Milvus collections..."
+docker compose build milvus-init
+docker compose run --rm milvus-init
+echo ""
+
+# Step 7: Build and Start Rust Backend
+echo "[7/10] Building and starting Rust backend..."
+docker compose build rust-backend
+docker compose up -d rust-backend
+sleep 10
+echo ""
+
 # Step 8: Run Producer to Process Images
 echo "[8/10] Processing images through pipeline..."
 docker compose build python-producer
